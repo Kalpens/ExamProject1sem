@@ -26,7 +26,7 @@ namespace API.Controllers
         [HttpGet]
         public IEnumerable<Customer> Get()
         {
-            
+
             return _customerGateway.Get();
         }
 
@@ -54,14 +54,14 @@ namespace API.Controllers
             }
             //return _customerGateway.Get(id);
         }
-        
+
         // POST: api/Customer
         [HttpPost]
         public void Post([FromBody]Customer customer)
         {
             _customerGateway.Create(customer);
         }
-        
+
         // PUT: api/Customer/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]Customer customer)
@@ -71,7 +71,7 @@ namespace API.Controllers
                 _customerGateway.Update(customer);
             }
         }
-        
+
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
         public void Delete(int id)
