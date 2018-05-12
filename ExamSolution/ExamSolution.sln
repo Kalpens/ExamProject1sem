@@ -5,11 +5,13 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{3D550F4C-5582-452E-A86E-2D044CFF5A4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL", "..\DAL\DAL.csproj", "{A0C838CC-E8DB-4C31-B7B4-CA8E76FD6ACC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "..\DAL\DAL.csproj", "{A0C838CC-E8DB-4C31-B7B4-CA8E76FD6ACC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BE", "BE\BE.csproj", "{777FF30F-055E-4270-963A-176D882FE7DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BE", "BE\BE.csproj", "{777FF30F-055E-4270-963A-176D882FE7DA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{D64C4955-65DF-4778-A6A5-E69C78F165D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "WebApi\WebApi.csproj", "{D64C4955-65DF-4778-A6A5-E69C78F165D2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Converter", "..\Converter\Converter.csproj", "{34BA33CF-30D1-41CC-A0E1-C63FE3C3FDBB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D64C4955-65DF-4778-A6A5-E69C78F165D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D64C4955-65DF-4778-A6A5-E69C78F165D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D64C4955-65DF-4778-A6A5-E69C78F165D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34BA33CF-30D1-41CC-A0E1-C63FE3C3FDBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34BA33CF-30D1-41CC-A0E1-C63FE3C3FDBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34BA33CF-30D1-41CC-A0E1-C63FE3C3FDBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34BA33CF-30D1-41CC-A0E1-C63FE3C3FDBB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
