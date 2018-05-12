@@ -61,6 +61,14 @@ namespace API.Controllers
         {
             _customerGateway.Create(customer);
         }
+        [HttpPost]
+        public void Post([FromBody] List<Customer> lst)
+        {
+            foreach (Customer c in lst)
+            {
+                _customerGateway.Create(c);
+            }
+        }
 
         // PUT: api/Customer/5
         [HttpPut("{id}")]
