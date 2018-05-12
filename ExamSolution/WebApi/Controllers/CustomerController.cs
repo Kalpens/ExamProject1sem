@@ -37,7 +37,7 @@ namespace API.Controllers
             using (var lookupCommand = _connection.CreateCommand())
             {
                 lookupCommand.CommandText = @"
-                    SELECT Where CustomerId = 1 FROM Customers";
+                    SELECT Where CustomerId = " + id + " FROM Customers";
                 var reader = await lookupCommand.ExecuteReaderAsync();
                 Customer customer = new Customer()
                 {
