@@ -37,18 +37,19 @@ namespace API.Controllers
             using (var lookupCommand = _connection.CreateCommand())
             {
                 lookupCommand.CommandText = @"
-                    SELECT Where CustomerId = " + id + " FROM Customers";
+                    SELECT * FROM customers Where CustomerId = " + id;
                 var reader = await lookupCommand.ExecuteReaderAsync();
                 Customer customer = new Customer()
                 {
                 };
                 while (await reader.ReadAsync())
+
                 {
                     customer.Id = reader.GetInt32(0);
-                    customer.BirthDate = reader.GetDateTime(0);
-                    customer.Name = reader.GetString(0);
-                    customer.PhoneNumber = reader.GetInt32(1);
-                    customer.Address = reader.GetString(1);
+                    customer.BirthDate = reader.GetDateTime(2);
+                    customer.Name = reader.GetString(1);
+                    customer.PhoneNumber = reader.GetInt32(4);
+                    customer.Address = reader.GetString(3);
                 }
                 return customer;
             }

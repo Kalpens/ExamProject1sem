@@ -73,7 +73,7 @@ namespace API
                     Configuration["CloudSql:CertificateFile"]
             };
             if (string.IsNullOrEmpty(connectionString.Database))
-                connectionString.Database = "visitors";
+                connectionString.Database = "users";
             DbConnection connection =
                 new MySqlConnection(connectionString.ConnectionString);
             // [END mysql_connection]
