@@ -12,6 +12,7 @@ using System.Data.Common;
 using System.Data;
 using System.Security.Cryptography.X509Certificates;
 using MySql.Data.MySqlClient;
+using WebApi.Quartz;
 
 namespace API
 {
@@ -32,6 +33,7 @@ namespace API
                 InitializeDatabase());
             services.AddMvc();
              _services = services;
+            JobScheduler.Start();
         }
 
         DbConnection InitializeDatabase()
