@@ -13,6 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.6" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.3" />
     <PackageReference Include="MySqlClient" Version="5.4.2" />
+    <PackageReference Include="Quartz" Version="3.0.4" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Converter\Converter.csproj" />
     <ProjectReference Include="..\..\DAL\DAL.csproj" />
     <ProjectReference Include="..\BE\BE.csproj" />
   </ItemGroup>
