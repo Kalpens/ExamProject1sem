@@ -1,0 +1,4 @@
+Name:      Adam
+Birthdate: 2000-01-01
+Address:   Something street
+Phone:     010302323
