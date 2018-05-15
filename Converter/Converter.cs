@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Converter
 {
-    class Converter
+    public class Converter
     {
         string path = @"Folder/";
 
