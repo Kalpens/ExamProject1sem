@@ -8,7 +8,7 @@ namespace Converter
 {
     class Converter
     {
-        string path = Directory.GetParent(@"../").FullName + "Folder";
+        string path = @"Folder/";
 
         public void Convert()
         {
