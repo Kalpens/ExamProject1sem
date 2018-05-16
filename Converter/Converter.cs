@@ -1,6 +1,7 @@
 ﻿using BE;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Text;
 
@@ -42,7 +43,7 @@ namespace Converter
                     }
                     if (counter == 1)
                     {
-                        c.BirthDate = DateTime.ParseExact(l, "d", null);
+                        c.BirthDate = DateTime.ParseExact(l, "yyyy-mm-dd", CultureInfo.InvariantCulture);
                     }
                     if (counter == 2)
                     {
