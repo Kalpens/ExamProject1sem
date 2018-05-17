@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using BE;
 
 namespace DAL
 {
     public interface IServiceGateway<T>
     {
-        T Get(int id);
-        List<T> Get();
-        bool Create(T newObject);
-        T Update(T updateObject);
-        bool Delete(int id);
+        Task<T> Get(int id);
+        Task<IEnumerable<Customer>> Get();
+        Task<bool> Create(T newObject);
+        Task<T> Update(T updateObject);
+        Task<bool> Delete(int id);
     }
 }
