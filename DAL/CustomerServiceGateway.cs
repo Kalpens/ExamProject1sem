@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Common;
+using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
 using BE;
@@ -21,7 +22,7 @@ namespace DAL
 
         public async Task<Customer> Get(int id)
         {
-            using (var lookupCommand = _connection.CreateCommand())
+            using (DbCommand lookupCommand = _connection.CreateCommand())
             {
                 lookupCommand.CommandText = @"
                     SELECT * FROM customers Where CustomerId = " + id;
@@ -42,22 +43,30 @@ namespace DAL
             }
         }
 
-        public Task<IEnumerable<Customer>> Get()
+        public async Task<IEnumerable<Customer>> Get()
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> Create(Customer newObject)
+        public async Task<bool> Create(Customer newObject)
+        {
+            using (DbCommand createCommand = _connection.CreateCommand())
+            {
+                createCommand.CommandText = @"insert into customers (Name, Birthdate, Address, Phone) values ('" + newObject.Name +
+                    "', '" + newObject.BirthDate + "', '" + newObject.Address + "', '" + newObject.PhoneNumber + "');";
+
+                await createCommand.ExecuteNonQueryAsync();
+                //Return true if rows affected is more than zero, otherwise return false
+                return true;
+            }
+        }
+
+        public async Task<Customer> Update(Customer updateObject)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Customer> Update(Customer updateObject)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
             throw new NotImplementedException();
         }
