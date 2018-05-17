@@ -84,8 +84,13 @@ namespace DAL
                     DELETE FROM customers Where CustomerId = " + id;
                 try
                 {
-                    await deleteCommand.ExecuteNonQueryAsync();
-                    return true;
+                    var resp = await deleteCommand.ExecuteNonQueryAsync();
+                    if (resp == 1)
+                    {
+                        return true;
+                    }
+
+                    return false;
                 }
                 catch
                 {
