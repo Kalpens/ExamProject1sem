@@ -25,20 +25,30 @@ namespace DAL
             {
                 lookupCommand.CommandText = @"
                     SELECT * FROM customers Where CustomerId = " + id;
-                var reader = await lookupCommand.ExecuteReaderAsync();
-                Customer customer = new Customer()
+                using (var reader = await lookupCommand.ExecuteReaderAsync())
                 {
-                };
-                while (await reader.ReadAsync())
+                    if (reader.Depth < 1)
+                    {
+                        Customer customer = new Customer()
+                        {
+                        };
+                        while (await reader.ReadAsync())
 
-                {
-                    customer.Id = reader.GetInt32(0);
-                    customer.BirthDate = reader.GetDateTime(2);
-                    customer.Name = reader.GetString(1);
-                    customer.PhoneNumber = reader.GetInt32(4);
-                    customer.Address = reader.GetString(3);
+                        {
+                            customer.Id = reader.GetInt32(0);
+                            customer.BirthDate = reader.GetDateTime(2);
+                            customer.Name = reader.GetString(1);
+                            customer.PhoneNumber = reader.GetInt32(4);
+                            customer.Address = reader.GetString(3);
+                        }
+
+                        return customer;
+                    }
+                    else
+                    {
+                        throw new Exception("Failed to read customer");
+                    }
                 }
-                return customer;
             }
         }
 
@@ -57,9 +67,22 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public Task<bool> Delete(int id)
+        public async Task<bool> Delete(int id)
         {
-            throw new NotImplementedException();
+            using (var deleteCommand = _connection.CreateCommand())
+            {
+                deleteCommand.CommandText = @"
+                    DELETE FROM customers Where CustomerId = " + id;
+                try
+                {
+                    await deleteCommand.ExecuteNonQueryAsync();
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
+            }
         }
     }
 }

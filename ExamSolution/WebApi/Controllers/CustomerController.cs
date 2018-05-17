@@ -34,36 +34,64 @@ namespace API.Controllers
 
         // GET: api/Customer/5
         [HttpGet("{id}", Name = "Get")]
-        public async Task<Customer> Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
-            return await _customerGateway.Get(id);
+            try
+            {
+                return Ok(await _customerGateway.Get(id));
+            }
+            catch
+            {
+                return BadRequest("Something went wrong while fetching user");
+            }
         }
 
         // POST: api/Customer
         [HttpPost]
-        public async Task Post([FromBody] List<Customer> lst)
+        public async Task<IActionResult> Post([FromBody] List<Customer> lst)
         {
-            foreach (Customer c in lst)
+            try
             {
-                await _customerGateway.Create(c);
+                foreach (Customer c in lst)
+                {
+                    await _customerGateway.Create(c);
+                }
+
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest("Something went wrong while creating user");
             }
         }
 
         // PUT: api/Customer/5
         [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody]Customer customer)
+        public async Task<IActionResult> Put(int id, [FromBody]Customer customer)
         {
             if (id == customer.Id)
             {
-                await _customerGateway.Update(customer);
+                return Ok(await _customerGateway.Update(customer));
+            }
+            else
+            {
+                return BadRequest("Id Does not match");
             }
         }
 
         // DELETE: api/ApiWithActions/5
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
-            await _customerGateway.Delete(id);
+            var response = await _customerGateway.Delete(id);
+            if (response)
+            {
+                return Ok();
+            }
+            else
+            {
+                return BadRequest("Something went wrong while deleting user");
+            }
         }
     }
 }
