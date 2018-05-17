@@ -26,15 +26,12 @@ namespace DAL
             {
                 lookupCommand.CommandText = @"
                     SELECT * FROM customers Where CustomerId = " + id;
-                using (var reader = await lookupCommand.ExecuteReaderAsync())
+                try
                 {
-                    if (reader.Depth < 1)
+                    using (var reader = await lookupCommand.ExecuteReaderAsync())
                     {
-                        Customer customer = new Customer()
-                        {
-                        };
+                        Customer customer = new Customer();
                         while (await reader.ReadAsync())
-
                         {
                             customer.Id = reader.GetInt32(0);
                             customer.BirthDate = reader.GetDateTime(2);
@@ -45,17 +42,46 @@ namespace DAL
 
                         return customer;
                     }
-                    else
-                    {
-                        throw new Exception("Failed to read customer");
-                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Failed to fetch user");
                 }
             }
         }
 
         public async Task<IEnumerable<Customer>> Get()
         {
-            throw new NotImplementedException();
+            using (DbCommand lookupCommand = _connection.CreateCommand())
+            {
+                lookupCommand.CommandText = @"
+                    SELECT * FROM customers";
+                try
+                {
+                    using (var reader = await lookupCommand.ExecuteReaderAsync())
+                    {
+                        List<Customer> listOfCustomers = new List<Customer>();
+                        Customer customer = new Customer();
+                        while (await reader.ReadAsync())
+                        {
+                            customer = new Customer();
+                            customer.Id = reader.GetInt32(0);
+                            customer.BirthDate = reader.GetDateTime(2);
+                            customer.Name = reader.GetString(1);
+                            customer.PhoneNumber = reader.GetInt32(4);
+                            customer.Address = reader.GetString(3);
+                            listOfCustomers.Add(customer);
+                        }
+
+                        return listOfCustomers;
+                    }
+                }
+                catch (Exception e)
+                {
+                    throw new Exception("Failed to read customers");
+                }
+                        
+                }
         }
 
         public async Task<bool> Create(Customer newObject)
