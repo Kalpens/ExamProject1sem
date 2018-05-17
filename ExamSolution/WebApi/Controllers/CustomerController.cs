@@ -62,6 +62,8 @@ namespace API.Controllers
         {
             _customerGateway.Create(customer);
         }
+
+        // POST: api/Customer
         [HttpPost]
         public void Post([FromBody] List<Customer> lst)
         {

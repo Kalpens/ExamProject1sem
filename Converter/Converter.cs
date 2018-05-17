@@ -19,7 +19,7 @@ namespace Converter
 
         private string[]  GetFiles()
         {
-            string[] files = System.IO.Directory.GetFiles(path, "*.txt");
+            string[] files = Directory.GetFiles(path, "*.txt");
 
             return files;
         }

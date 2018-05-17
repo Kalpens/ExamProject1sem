@@ -13,4 +13,8 @@
     <ProjectReference Include="..\ExamSolution\BE\BE.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Folder\" />
+  </ItemGroup>
+
 </Project>
