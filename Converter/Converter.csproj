@@ -5,16 +5,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Folder\**" />
+    <EmbeddedResource Remove="Folder\**" />
+    <None Remove="Folder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
     <PackageReference Include="RestSharp" Version="106.2.2" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\ExamSolution\BE\BE.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Folder\" />
   </ItemGroup>
 
 </Project>
