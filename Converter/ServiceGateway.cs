@@ -10,7 +10,7 @@ namespace Converter
 {
     class ServiceGateway
     {
-        string connection = "http://localhost:64943/api/customer/";
+        string connection = "http://localhost:64943/api/customer";
 
         public void postMany(List<Customer> lst)
         {
@@ -19,8 +19,9 @@ namespace Converter
             // before you can run the request.
             client.BaseUrl = new Uri(connection);
             var request = new RestRequest(Method.POST);
-            request.AddParameter("application/json; charset=utf-8", JsonConvert.SerializeObject(lst), ParameterType.RequestBody);
-            var response = client.Execute<List<Customer>>(request);
+            request.RequestFormat = DataFormat.Json;
+            request.AddBody(lst);
+            client.Execute(request);
         }
     }
 }

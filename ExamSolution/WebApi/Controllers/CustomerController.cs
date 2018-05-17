@@ -41,13 +41,6 @@ namespace API.Controllers
 
         // POST: api/Customer
         [HttpPost]
-        public void Post([FromBody]Customer customer)
-        {
-            _customerGateway.Create(customer);
-        }
-
-        // POST: api/Customer
-        [HttpPost]
         public async Task Post([FromBody] List<Customer> lst)
         {
             foreach (Customer c in lst)
