@@ -63,9 +63,16 @@ namespace DAL
             using (DbCommand createCommand = _connection.CreateCommand())
             {
                 createCommand.CommandText = @"insert into customers (Name, Birthdate, Address, Phone) values ('" + newObject.Name +
-                    "', '" + newObject.BirthDate + "', '" + newObject.Address + "', '" + newObject.PhoneNumber + "');";
-
-                await createCommand.ExecuteNonQueryAsync();
+                    "', '" + newObject.BirthDate.Date.ToString("yyyyMMdd") + "', '" + newObject.Address + "', '" + newObject.PhoneNumber + "');";
+                try
+                {
+                    await createCommand.ExecuteNonQueryAsync();
+                }
+                catch
+                {
+                    return false;
+                }
+                
                 //Return true if rows affected is more than zero, otherwise return false
                 return true;
             }
