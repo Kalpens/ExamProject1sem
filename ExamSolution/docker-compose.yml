@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  webapi:
+    image: webapi
+    ports: 
+     - "8004:80"
+    build:
+      context: .
+      dockerfile: WebApi\Dockerfile

@@ -21,9 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Converter\Converter.csproj" />
-    <ProjectReference Include="..\..\DAL\DAL.csproj" />
     <ProjectReference Include="..\BE\BE.csproj" />
+    <ProjectReference Include="..\Converter\Converter.csproj" />
+    <ProjectReference Include="..\DAL\DAL.csproj" />
   </ItemGroup>
 
 </Project>
