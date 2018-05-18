@@ -1,14 +1,11 @@
-FROM microsoft/aspnetcore:2.0-nanoserver-1709 AS base
+FROM microsoft/aspnetcore:2.0-nanoserver-sac2016 AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.0-nanoserver-1709 AS build
+FROM microsoft/aspnetcore-build:2.0-nanoserver-sac2016 AS build
 WORKDIR /src
 COPY ExamSolution.sln ./
 COPY WebApi/WebApi.csproj WebApi/
-COPY ../DAL/DAL.csproj ../DAL/
-COPY BE/BE.csproj BE/
-COPY ../Converter/Converter.csproj ../Converter/
 RUN dotnet restore -nowarn:msb3202,nu1503
 COPY . .
 WORKDIR /src/WebApi
