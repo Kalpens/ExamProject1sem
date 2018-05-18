@@ -11,7 +11,7 @@ namespace DAL
         Task<T> Get(int id);
         Task<IEnumerable<Customer>> Get();
         Task<bool> Create(T newObject);
-        Task<T> Update(T updateObject);
+        Task<bool> Update(T updateObject);
         Task<bool> Delete(int id);
     }
 }

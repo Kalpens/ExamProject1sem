@@ -55,23 +55,27 @@ namespace DAL
             using (DbCommand lookupCommand = _connection.CreateCommand())
             {
                 lookupCommand.CommandText = @"
-                    SELECT * FROM customers";
+                    SELECT * FROM customers;";
                 try
                 {
-                    using (var reader = await lookupCommand.ExecuteReaderAsync())
+                    using (DbDataReader reader = await lookupCommand.ExecuteReaderAsync())
                     {
                         List<Customer> listOfCustomers = new List<Customer>();
-                        Customer customer = new Customer();
+                        //Customer customer = new Customer();
                         while (await reader.ReadAsync())
                         {
-                            customer = new Customer();
+                            /*customer = new Customer();
                             customer.Id = reader.GetInt32(0);
                             customer.BirthDate = reader.GetDateTime(2);
                             customer.Name = reader.GetString(1);
                             customer.PhoneNumber = reader.GetInt32(4);
                             customer.Address = reader.GetString(3);
+                            listOfCustomers.Add(customer);*/
+                            Customer customer = new Customer((int)reader["CustomerID"], (string)reader["Name"],
+                            (DateTime)reader["Birthdate"], (string)reader["Address"], (int)reader["Phone"]);
+
                             listOfCustomers.Add(customer);
-                        }
+                        }                        
 
                         return listOfCustomers;
                     }
@@ -89,7 +93,9 @@ namespace DAL
             using (DbCommand createCommand = _connection.CreateCommand())
             {
                 createCommand.CommandText = @"insert into customers (Name, Birthdate, Address, Phone) values ('" + newObject.Name +
-                    "', '" + newObject.BirthDate.Date.ToString("yyyyMMdd") + "', '" + newObject.Address + "', '" + newObject.PhoneNumber + "');";
+                    "', '" + newObject.BirthDate.Date.ToString("yyyyMMdd") + "', '" + newObject.Address + 
+                    "', '" + newObject.PhoneNumber + "');";
+
                 try
                 {
                     await createCommand.ExecuteNonQueryAsync();
@@ -104,9 +110,25 @@ namespace DAL
             }
         }
 
-        public async Task<Customer> Update(Customer updateObject)
+        public async Task<bool> Update(Customer updateObject)
         {
-            throw new NotImplementedException();
+            using (DbCommand updateCommand = _connection.CreateCommand())
+            {
+                updateCommand.CommandText = @"update customers set Name='" + updateObject.Name + "', BirthDate='" +
+                    updateObject.BirthDate.Date.ToString("yyyMMdd") + "', Address='" + updateObject.Address + "', Phone='" +
+                    updateObject.PhoneNumber + "' where CustomerID='" + updateObject.Id + "';";
+
+                try
+                {
+                    await updateCommand.ExecuteNonQueryAsync();
+                }
+                catch
+                {
+                    return false;
+                }
+
+                return true;
+            }
         }
 
         public async Task<bool> Delete(int id)
