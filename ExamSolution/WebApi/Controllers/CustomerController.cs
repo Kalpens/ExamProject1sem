@@ -26,10 +26,17 @@ namespace API.Controllers
         }
         // GET: api/Customer
         [HttpGet]
-        public async Task<IEnumerable<Customer>> Get()
+        public async Task<IActionResult> Get()
         {
 
-            return await _customerGateway.Get();
+            try
+            {
+                return Ok(await _customerGateway.Get());
+            }
+            catch
+            {
+                return BadRequest("Something went wrong while fetching users");
+            }
         }
 
         // GET: api/Customer/5
@@ -46,6 +53,21 @@ namespace API.Controllers
             }
         }
 
+        // GET: api/Customer/Jakob
+        [HttpGet]
+        [Route("name")]
+        public async Task<IActionResult> GetByName(string name)
+        {
+            try
+            {
+                return Ok(await _customerGateway.Get(name));
+            }
+            catch
+            {
+                return BadRequest("Something went wrong while fetching users with provided name: " + name);
+            }
+        }
+
         // POST: api/Customer
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] List<Customer> lst)
@@ -59,7 +81,7 @@ namespace API.Controllers
 
                 return Ok();
             }
-            catch
+            catch (Exception e)
             {
                 return BadRequest("Something went wrong while creating user");
             }

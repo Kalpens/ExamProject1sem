@@ -33,7 +33,8 @@ namespace API
                 InitializeDatabase());
             services.AddMvc();
              _services = services;
-            JobScheduler.Start();
+            //Disabling quartz
+            //JobScheduler.Start();
         }
 
         DbConnection InitializeDatabase()
