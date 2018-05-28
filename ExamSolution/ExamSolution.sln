@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Converter", "Converter\Conv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAL", "DAL\DAL.csproj", "{8C48F1EA-0385-4A0A-81E0-7084EAA509EB}"
 EndProject
-Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{34D6EBC6-7AFA-4BF3-94E8-9C66DBA4FC60}"
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{34EFFB6D-AEFA-43EF-98DA-A657ACF187BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{8C48F1EA-0385-4A0A-81E0-7084EAA509EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8C48F1EA-0385-4A0A-81E0-7084EAA509EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8C48F1EA-0385-4A0A-81E0-7084EAA509EB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{34D6EBC6-7AFA-4BF3-94E8-9C66DBA4FC60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{34D6EBC6-7AFA-4BF3-94E8-9C66DBA4FC60}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{34D6EBC6-7AFA-4BF3-94E8-9C66DBA4FC60}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{34D6EBC6-7AFA-4BF3-94E8-9C66DBA4FC60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34EFFB6D-AEFA-43EF-98DA-A657ACF187BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34EFFB6D-AEFA-43EF-98DA-A657ACF187BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34EFFB6D-AEFA-43EF-98DA-A657ACF187BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34EFFB6D-AEFA-43EF-98DA-A657ACF187BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
