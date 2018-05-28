@@ -10,7 +10,7 @@ namespace Converter
 {
     class ServiceGateway
     {
-        string connection = "http://localhost:64943/api/customer";
+        string connection = "https://customerexamproject.appspot.com/api/customer";
 
         public void postMany(List<Customer> lst)
         {

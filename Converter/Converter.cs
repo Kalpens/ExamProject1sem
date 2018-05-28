@@ -14,7 +14,11 @@ namespace Converter
         public void Convert()
         {
             ServiceGateway sg = new ServiceGateway();
-            sg.postMany(ReadFiles());
+            //sg.postMany(ReadFiles());
+            List<Customer> lst = new List<Customer>();
+            lst.Add(new Customer(){Address = "School Streer 1", BirthDate = DateTime.Now, Name = "Auto User", PhoneNumber = 12432584});
+            lst.Add(new Customer(){Address = "School Streer 2", BirthDate = DateTime.Now, Name = "Auto User", PhoneNumber = 12432584});
+            sg.postMany(lst);
         }
 
         private string[]  GetFiles()
