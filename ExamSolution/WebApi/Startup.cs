@@ -33,7 +33,7 @@ namespace API
                 InitializeDatabase());
             services.AddMvc();
              _services = services;
-            JobScheduler.Start();
+            //JobScheduler.Start();
         }
 
         DbConnection InitializeDatabase()
