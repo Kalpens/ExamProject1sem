@@ -74,12 +74,13 @@ namespace API.Controllers
         {
             try
             {
+                bool response = false;
                 foreach (Customer c in lst)
                 {
-                    await _customerGateway.Create(c);
+                    response = await _customerGateway.Create(c);
                 }
 
-                return Ok();
+                return Ok(response);
             }
             catch (Exception e)
             {
@@ -108,7 +109,7 @@ namespace API.Controllers
             var response = await _customerGateway.Delete(id);
             if (response)
             {
-                return Ok();
+                return Ok(response);
             }
             else
             {
